@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
     product.price = params[:price] || product.price
     product.image_url = params[:image_url] || product.image_url
     product.description = params[:description] || product.description
-    if product.save
+    if product.savecd 
       render json: product.as_json
     else
       render json: {errors: product.errors.full_message},
