@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   validates :price, presence: true
   
   belongs_to :supplier
-  
+  has_many :orders
   def tax
     price * 0.09
   end
