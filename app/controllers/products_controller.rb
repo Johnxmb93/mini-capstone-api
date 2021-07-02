@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
   def index
     products = Product.all
     render json: products.as_json
@@ -18,8 +19,7 @@ class ProductsController < ApplicationController
       status: 422
     end 
   end
-
-  def show
+fefe
     product = Product.find_by(id: params[:id])
     render json: product
   end
