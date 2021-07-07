@@ -7,6 +7,8 @@ class Product < ApplicationRecord
   has_many :orders
   has_many :product_categories
   has_many :categories, through: :product_categories
+  has_many :carted_products
+  has_many :users
   def tax
     price * 0.09
   end
