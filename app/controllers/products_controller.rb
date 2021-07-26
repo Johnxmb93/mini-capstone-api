@@ -18,8 +18,6 @@ class ProductsController < ApplicationController
       render json: {errors: product.errors.full_message},
       status: 422
     end 
-  end
-fefe
     product = Product.find_by(id: params[:id])
     render json: product
   end
