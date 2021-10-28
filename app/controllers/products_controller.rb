@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin, except: [:index, :show]
+  before_action :authenticate_user, except: [:index, :show]
   def index
     products = Product.all
     render json: products.as_json
@@ -28,10 +28,10 @@ class ProductsController < ApplicationController
     product.price = params[:price] || product.price
     product.image_url = params[:image_url] || product.image_url
     product.description = params[:description] || product.description
-    if product.savecd 
+    if product.save 
       render json: product.as_json
     else
-      render json: {errors: product.errors.full_message},
+      render json: {errors: product.errors.full_messages},
       status: 422
     end
   end
